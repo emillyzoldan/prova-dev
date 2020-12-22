@@ -42,9 +42,11 @@ public class SystemDataDao {
         }
         for (String file : fileNames) {
             try {
+                if (file.contains(".dat")){
                 List<String> linesa = Files.readAllLines(folderPath.resolve(file));
                 linesOfFiles.put(file, linesa);
                 allLines.add(linesa);
+                }
             } catch (IOException e) {
                 throw new FileReaderException("An error ocurred while reading the files: " + e.getMessage());
             }
